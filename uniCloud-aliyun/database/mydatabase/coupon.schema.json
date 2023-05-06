@@ -1,0 +1,30 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"reduce": {
+			"bsonType": "int",
+			"title": "减少价格",
+			"description": ""
+		},
+		"begin_time": {
+			"bsonType": "date",
+			"title": "开始时间",
+			"description": ""
+		},
+		"end_time": {
+			"bsonType": "date",
+			"title": "结束时间",
+			"description": ""
+		}
+	}
+}

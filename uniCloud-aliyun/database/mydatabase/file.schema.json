@@ -1,0 +1,47 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"name": {
+			"bsonType": "string",
+			"title": "文件名称",
+			"description": "",
+		},
+		"url": {
+			"bsonType": "string",
+			"title": "文件路径",
+			"description": "",
+		},
+		"type": {
+			"bsonType": "string",
+			"title": "文件类型",
+			"description": "",
+		},
+		"size": {
+			"bsonType": "int",
+			"title": "文件大小",
+			"description": "",
+		},
+		"is_deleted": {
+			"bsonType": "bool",
+			"title": "文件是否被删除",
+			"description": "false未删除， true已删除",
+			"defaultValue": false
+		},
+		"is_used": {
+			"bsonType": "bool",
+			"title": "文件是否被使用",
+			"description": "false未使用， true已使用",
+			"defaultValue": false
+		}
+	}
+}

@@ -1,0 +1,70 @@
+{
+	"bsonType": "object",
+	"required": ["password", "phone", "role_id"],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"user_name": {
+			"bsonType": "string",
+			"title": "用户名",
+			"description": "用户名"
+		},
+		"password": {
+			"bsonType": "string",
+			"title": "密码",
+			"description": "用户密码",
+			"errorMessage": "{title}不能为空"
+		},
+		"phone": {
+			"bsonType": "string",
+			"title": "电话",
+			"description": "用户电话号码",
+			"errorMessage": "{title}不能为空"
+		},
+		"register_time": {
+			"bsonType": "timestamp",
+			"title": "注册时间",
+			"description": "用户注册时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"area": {
+			"bsonType": "string",
+			"title": "所在地区",
+			"description": ""
+		},
+		"role_id": {
+			"bsonType": "int",
+			"title": "角色id",
+			"description": "1学员，2会员",
+			"errorMessage": "{title}不能为空",
+			"defaultValue": 1,
+			"enum": [{
+					"text": "学员",
+					"value": 1
+				},
+				{
+					"text": "会员",
+					"value": 2
+				}
+			]
+		},
+		"email": {
+			"bsonType": "string",
+			"title": "邮箱",
+			"description": "用户邮箱",
+			"format": "email",
+			"errorMessage": {
+				"format": "{title}格式无效"
+			}
+		}
+	}
+}

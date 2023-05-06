@@ -1,0 +1,33 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"act_id": {
+			"bsonType": "int",
+			"description": "活动id",
+			"title": "用户所参与的活动的id",
+			"foreignKey": "activity._id"
+		},
+		"user_id": {
+			"bsonType": "int",
+			"description": "参与活动的用户的id",
+			"title": "用户id",
+			"foreignKey": "user._id"
+		},
+		"status": {
+			"bsonType": "bool",
+			"title": "参加状态",
+			"description": "用户参加活动的状态： false未报名，true已报名",
+			"defaultValue": false
+		}
+	}
+}

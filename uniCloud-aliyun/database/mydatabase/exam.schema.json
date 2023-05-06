@@ -1,0 +1,40 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"name": {
+			"bsonType": "string",
+			"title": "考试名称",
+			"description": "考试名称"
+		},
+		"number": {
+			"bsonType": "int",
+			"title": "考试人数",
+			"description": "考试人数(随着参与人数增加而增加)"
+		},
+		"score": {
+			"bsonType": "int",
+			"title": "及格分数",
+			"description": "设置该考试的及格分数"
+		},
+		"pass": {
+			"bsonType": "int",
+			"title": "通过人数",
+			"description": "考试通过的人数（随通过人数增加修改）"
+		},
+		"term": {
+			"bsonType": "int",
+			"title": "期限",
+			"description": "考试期限，需调整"
+		}
+	}
+}

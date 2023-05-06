@@ -1,0 +1,59 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"create_time": {
+			"bsonType": "timestamp",
+			"title": "参加时间",
+			"description": "用户参加考试的时间"
+		},
+		"user_id": {
+			"bsonType": "int",
+			"title": "用户id",
+			"description": "参加用户的id",
+			"foreignKey": "user._id"
+		},
+		"exam_id": {
+			"bsonType": "int",
+			"title": "考试id",
+			"description": "参加考试的id",
+			"foreignKey": "exam._id"
+		},
+		"paper": {
+			"bsonType": "string",
+			"title": "试卷",
+			"description": "考试用的试卷"
+		},
+		"course_id": {
+			"bsonType": "int",
+			"title": "课程id",
+			"description": "该次考试属于哪一个课程",
+			"foreignKey": "course._id"
+		},
+		"user_answer": {
+			"bsonType": "string",
+			"title": "答卷",
+			"description": "用户的答卷"
+		},
+		"status": {
+			"bsonType": "bool",
+			"title": "考试状态",
+			"description": "考试状态：true进行中 false已结束",
+			"defaultValue": true
+		},
+		"score": {
+			"bsonType": "int",
+			"title": "分数",
+			"description": "这次考试的分数"
+		}
+	}
+}

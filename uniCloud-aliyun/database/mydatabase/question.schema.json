@@ -1,0 +1,76 @@
+{
+	"bsonType": "object",
+	"required": ["answer"],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"title":{
+			"bsonType":"string",
+			"title":"题目名称",
+			"description":"题目的名称"
+		},
+		"a":{
+			"bsonType":"string",
+			"title":"A",
+			"description":"选项A"
+		},
+		"b":{
+			"bsonType":"string",
+			"title":"B",
+			"description":"选项B"
+		},
+		"c":{
+			"bsonType":"string",
+			"title":"C",
+			"description":"选项C"
+		},
+		"d":{
+			"bsonType":"string",
+			"title":"D",
+			"description":"选项D"
+		},
+		"answer":{
+			"bsonType":"int",
+			"title":"答案",
+			"description":"答案",
+			"errorMessage":{
+				"required" : "请给题目设置正确答案"
+			},
+			"enum":[
+				{
+					"text":"答案A",
+					"value":1
+				},
+				{
+					"text":"答案B",
+					"value":2
+				},
+				{
+					"text":"答案C",
+					"value:":3
+				},
+				{
+					"text":"答案D",
+					"value":4
+				}
+			]
+		},
+		"parse":{
+			"bsonType":"string",
+			"title":"解析",
+			"description":"解析"
+		},
+		"course_id":{
+			"bsonType":"int",
+			"title":"课程ID",
+			"description":"课程ID"
+		}
+	}
+}

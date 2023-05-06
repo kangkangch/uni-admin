@@ -1,0 +1,70 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		}
+		"name": {
+			"bsonType": "string",
+			"title": "模板名称",
+			"description": ""
+		},
+		"bpath": {
+			"bsonType": "string",
+			"title": "背景路径",
+			"description": ""
+		},
+		"name_x": {
+			"bsonType": "int",
+			"title": "名字x位置",
+			"description": ""
+		},
+		"name_y": {
+			"bsonType": "int",
+			"title": "名字y位置",
+			"description": ""
+		},
+		"content_x": {
+			"bsonType": "int",
+			"title": "内容x位置",
+			"description": ""
+		},
+		"content_y": {
+			"bsonType": "int",
+			"title": "内容y位置",
+			"description": ""
+		},
+		"content_width": {
+			"bsonType": "int",
+			"title": "内容宽度",
+			"description": ""
+		}
+		"date_x": {
+			"bsonType": "int",
+			"title": "日期x位置",
+			"description": ""
+		},
+		"date_y": {
+			"bsonType": "int",
+			"title": "日期y位置",
+			"description": ""
+		},
+		"font_size": {
+			"bsonType": "int",
+			"title": "字体大小",
+			"description": ""
+		},
+		"content": {
+			"bsonType": "string",
+			"title": "模板内容",
+			"description": ""
+		}
+	}
+}
