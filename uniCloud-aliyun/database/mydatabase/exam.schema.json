@@ -12,7 +12,7 @@
 			"description": "ID，系统自动生成"
 		},
 		"cource_id": {
-			"bsonType": "int",
+			"bsonType": "string",
 			"title": "课程id",
 			"description": "对应的课程id",
 			"foreignKey": "course._id"

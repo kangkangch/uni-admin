@@ -46,6 +46,45 @@ const validator = {
     ],
     "title": "vip价格",
     "label": "vip价格"
+  },
+  "exam_id": {
+    "rules": [
+      {
+        "format": "string"
+      }
+    ],
+    "title": "考试id",
+    "defaultValue": "none",
+    "label": "考试id"
+  },
+  "begin_time": {
+    "rules": [
+      {
+        "required": true,
+        "errorMessage": "开始时间不能为空"
+      },
+      {
+        "format": "string",
+        "errorMessage": "开始时间格式错误"
+      }
+    ],
+    "title": "开始时间",
+    "defaultValue": {
+      "$env": "now"
+    },
+    "label": "开始时间"
+  },
+  "end_time": {
+    "rules": [
+      {
+        "format": "string"
+      }
+    ],
+    "title": "结束时间",
+    "defaultValue": {
+      "$env": "now"
+    },
+    "label": "结束时间"
   }
 }
 

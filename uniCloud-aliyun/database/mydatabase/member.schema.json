@@ -3,9 +3,9 @@
 	"required": [],
 	"permission": {
 		"read": true,
-		"create": false,
-		"update": false,
-		"delete": false
+		"create": true,
+		"update": true,
+		"delete": true
 	},
 	"fieldRules": [{
 	    "rule": "bind_num == null || bind_num != null && bind_num <= max_bind",
@@ -15,39 +15,39 @@
 		"_id": {
 			"description": "ID，系统自动生成"
 		},
-		"user_id" {
-			"bsonType": "int",
+		"user_id": {
+			"bsonType": "string",
 			"title": "用户id",
 			"description": "",
 			"foreignKey": "user._id"
 		},
-		"create_time" {
+		"create_time": {
 			"bsonType": "date",
 			"title": "申请日期",
 			"description": "成为会员的日期"
 		},
-		"update_time" {
+		"update_time": {
 			"bsonType": "date",
 			"title": "续费日期",
 			"description": "续费会员的日期"
 		},
-		"end_time" {
+		"end_time": {
 			"bsonType": "date",
 			"title": "到期日期",
 			"description": ""
 		},
-		"bind_num" {
+		"bind_num": {
 			"bsonType": "int",
 			"title": "挂靠人数",
 			"description": ""
 		},
-		"package_id" {
-			"bsonType": "int",
+		"package_id": {
+			"bsonType": "string",
 			"title": "等级包id",
 			"description": "",
 			"foreignKey": "member_package._id"
 		},
-		"max_bid" {
+		"max_bid": {
 			"bsonType": "int",
 			"title": "最大挂靠数",
 			"description": ""

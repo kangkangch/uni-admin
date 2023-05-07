@@ -1,1 +1,64 @@
-{"bsonType":"object","required":[],"permission":{"read":true,"create":true,"update":true,"delete":true},"properties":{"_id":{"description":"ID，系统自动生成"},"name":{"bsonType":"string","title":"课程名称","description":""},"intro":{"bsonType":"string","title":"课程描述","description":""},"cover_path":{"bsonType":"string","title":"封面路径","description":""},"price":{"bsonType":"int","title":"课程价格","description":""},"vip_price":{"bsonType":"int","title":"vip价格","description":""}}}
+{
+	"bsonType": "object",
+	"required": ["begin_time"],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"fieldRules": [{
+		"rule": "end_time == '' ||( end_time != '' && end_time >= begin_time)",
+		"errorMessage": "结束时间不能早于开始时间"
+	}],
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"name": {
+			"bsonType": "string",
+			"title": "课程名称",
+			"description": ""
+		},
+		"intro": {
+			"bsonType": "string",
+			"title": "课程描述",
+			"description": ""
+		},
+		"cover_path": {
+			"bsonType": "string",
+			"title": "封面路径",
+			"description": ""
+		},
+		"price": {
+			"bsonType": "int",
+			"title": "课程价格",
+			"description": ""
+		},
+		"vip_price": {
+			"bsonType": "int",
+			"title": "vip价格",
+			"description": ""
+		},
+		"exam_id": {
+			"bsonType": "string",
+			"title": "考试id",
+			"defaultValue": "none"
+		},
+		"begin_time": {
+			"bsonType": "string",
+			"title": "开始时间",
+			"defaultValue": {
+				"$env": "now"
+			},
+			"errorMessage": "开始时间不能为空"
+		},
+		"end_time": {
+			"bsonType": "string",
+			"title": "结束时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		}
+	}
+}

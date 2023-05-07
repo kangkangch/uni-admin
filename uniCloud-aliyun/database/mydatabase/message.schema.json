@@ -2,10 +2,10 @@
 	"bsonType": "object",
 	"required": [],
 	"permission": {
-		"read": false,
-		"create": false,
-		"update": false,
-		"delete": false
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
 	},
 	"properties": {
 		"_id": {
@@ -40,7 +40,7 @@
 			"defaultValue": false
 		},
 		"user_id":{
-			"bsonType":"int",
+			"bsonType":"string",
 			"title":"用户ID",
 			"description":"接收消息的用户的ID",
 			"foreignKey": "user._id"

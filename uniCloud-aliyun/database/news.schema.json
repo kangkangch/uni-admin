@@ -1,1 +1,30 @@
-{"bsonType":"object","required":[],"permission":{"read":false,"create":false,"update":false,"delete":false},"properties":{"_id":{"description":"ID，系统自动生成"},"title":{"bsonType":"string","title":"推送名称","description":"推送名称"},"create_time":{"bsonType":"timestamp","title":"创建时间","description":"推送创建时间"},"context":{"bsonType":"string","title":"内容","description":"推送的内容"}}}
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"title":{
+			"bsonType":"string",
+			"title":"推送名称",
+			"description":"推送名称"
+		},
+		"create_time":{
+			"bsonType":"timestamp",
+			"title":"创建时间",
+			"description":"推送创建时间"
+		},
+		"context":{
+			"bsonType":"string",
+			"title":"内容",
+			"description":"推送的内容"
+		}
+	}
+}

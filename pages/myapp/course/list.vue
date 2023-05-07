@@ -16,7 +16,7 @@
       </view>
     </view>
     <view class="uni-container">
-      <unicloud-db ref="udb" :collection="collectionList" field="name,intro,cover_path,price,vip_price" :where="where" page-data="replace"
+      <unicloud-db ref="udb" :collection="collectionList" field="name,intro,cover_path,price,vip_price,exam_id,begin_time,end_time" :where="where" page-data="replace"
         :orderby="orderby" :getcount="true" :page-size="options.pageSize" :page-current="options.pageCurrent"
         v-slot:default="{data,pagination,loading,error,options}" :options="options" loadtime="manual" @load="onqueryload">
         <uni-table ref="table" :loading="loading" :emptyText="error.message || '没有更多数据'" border stripe type="selection" @selection-change="selectionChange">
@@ -26,6 +26,9 @@
             <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'cover_path')" sortable @sort-change="sortChange($event, 'cover_path')">封面路径</uni-th>
             <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'price')" sortable @sort-change="sortChange($event, 'price')">课程价格</uni-th>
             <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'vip_price')" sortable @sort-change="sortChange($event, 'vip_price')">vip价格</uni-th>
+            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'exam_id')" sortable @sort-change="sortChange($event, 'exam_id')">考试id</uni-th>
+            <uni-th align="center" filter-type="date" @filter-change="filterChange($event, 'begin_time')" sortable @sort-change="sortChange($event, 'begin_time')">开始时间</uni-th>
+            <uni-th align="center" filter-type="date" @filter-change="filterChange($event, 'end_time')" sortable @sort-change="sortChange($event, 'end_time')">结束时间</uni-th>
             <uni-th align="center">操作</uni-th>
           </uni-tr>
           <uni-tr v-for="(item,index) in data" :key="index">
@@ -34,6 +37,9 @@
             <uni-td align="center">{{item.cover_path}}</uni-td>
             <uni-td align="center">{{item.price}}</uni-td>
             <uni-td align="center">{{item.vip_price}}</uni-td>
+            <uni-td align="center">{{item.exam_id}}</uni-td>
+            <uni-td align="center">{{item.begin_time}}</uni-td>
+            <uni-td align="center">{{item.end_time}}</uni-td>
             <uni-td align="center">
               <view class="uni-group">
                 <button @click="navigateTo('./edit?id='+item._id, false)" class="uni-button" size="mini" type="primary">修改</button>
@@ -56,7 +62,7 @@
   const db = uniCloud.database()
   // 表查询配置
   const dbOrderBy = '' // 排序字段
-  const dbSearchFields = ['name'] // 模糊搜索字段，支持模糊搜索的字段列表。联表查询格式: 主表字段名.副表字段名，例如用户表关联角色表 role.role_name
+  const dbSearchFields = [] // 模糊搜索字段，支持模糊搜索的字段列表。联表查询格式: 主表字段名.副表字段名，例如用户表关联角色表 role.role_name
   // 分页配置
   const pageSize = 20
   const pageCurrent = 1
@@ -93,7 +99,10 @@
             "课程描述": "intro",
             "封面路径": "cover_path",
             "课程价格": "price",
-            "vip价格": "vip_price"
+            "vip价格": "vip_price",
+            "考试id": "exam_id",
+            "开始时间": "begin_time",
+            "结束时间": "end_time"
           }
         },
         exportExcelData: []

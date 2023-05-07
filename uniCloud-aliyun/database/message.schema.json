@@ -1,1 +1,55 @@
-{"bsonType":"object","required":[],"permission":{"read":false,"create":false,"update":false,"delete":false},"properties":{"_id":{"description":"ID，系统自动生成"},"title":{"bsonType":"string","title":"消息名称","description":"消息名称"},"content":{"bsonType":"string","title":"消息内容","description":"消息内容"},"email":{"bsonType":"int","title":"是否发送到邮箱","description":"是否发送到邮箱","enum":[{"text":"不发送到邮箱","value":0},{"text":"发送到邮箱","value":1}]},"message":{"bsonType":"int","title":"是否发送消息","description":"是否发送消息","enum":[{"text":"不发送消息","value":0},{"text":"发送消息","value":1}]},"read":{"bsonType":"int","title":"是否已读","description":"是否已读","enum":[{"text":"未读","value":0},{"text":"已读","value":1}]},"user_id":{"bsonType":"int","title":"用户ID","description":"接收消息的用户的ID","foreignKey":"user._id"},"create_time":{"bsonType":"timestamp","title":"创建时间","description":"创建时间","defaultValue":null}}}
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"title":{
+			"bsonType":"string",
+			"title":"消息名称",
+			"description":"消息名称"
+		},
+		"content":{
+			"bsonType":"string",
+			"title":"消息内容",
+			"description":"消息内容"
+		},
+		"email":{
+			"bsonType":"bool",
+			"title":"是否发送到邮箱",
+			"description":"是否发送到邮箱 true为是，false为否",
+			"defaultValue": false
+		},
+		"message":{
+			"bsonType":"bool",
+			"title":"是否发送消息",
+			"description":"是否发送消息 false为否， true为发送",
+			"defaultValue": true
+		},
+		"read":{
+			"bsonType":"bool",
+			"title":"是否已读",
+			"description":"是否已读 false未读， true已读",
+			"defaultValue": false
+		},
+		"user_id":{
+			"bsonType":"string",
+			"title":"用户ID",
+			"description":"接收消息的用户的ID",
+			"foreignKey": "user._id"
+		},
+		"create_time":{
+			"bsonType":"timestamp",
+			"title":"创建时间",
+			"description":"创建时间",
+			"defaultValue":null
+		}
+	}
+}

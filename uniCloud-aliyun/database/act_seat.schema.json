@@ -1,1 +1,32 @@
-{"bsonType":"object","required":[],"permission":{"read":false,"create":false,"update":false,"delete":false},"properties":{"_id":{"description":"ID，系统自动生成"},"user_id":{"bsonType":"int","title":"用户id","description":"座位使用者的id","foreignKey":"user._id"},"act_id":{"bsonType":"int","title":"活动id","description":"参加的活动的id","foreignKey":"activity._id"},"seat":{"bsonType":"int","title":"座位号","description":"该用户的座位号","defaultValue":0,"enum":[{"text":"未报名","value":0},{"text":"已报名","value":1}]}}}
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"title": "用户id",
+			"description": "座位使用者的id",
+			"foreignKey": "user._id"
+		},
+		"act_id": {
+			"bsonType": "int",
+			"title": "活动id",
+			"description": "参加的活动的id",
+			"foreignKey": "activity._id"
+		},
+		"seat": {
+			"bsonType": "int",
+			"title": "座位号",
+			"description": "该用户的座位号"
+		}
+	}
+}

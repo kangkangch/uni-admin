@@ -15,11 +15,11 @@ const validator = {
     "rules": [
       {
         "required": true,
-        "errorMessage": "{title}不能为空"
+        "errorMessage": "密码不能为空"
       },
       {
         "format": "string",
-        "errorMessage": "{title}不能为空"
+        "errorMessage": "密码格式错误"
       }
     ],
     "title": "密码",
@@ -29,11 +29,11 @@ const validator = {
     "rules": [
       {
         "required": true,
-        "errorMessage": "{title}不能为空"
+        "errorMessage": "手机号不能为空"
       },
       {
         "format": "string",
-        "errorMessage": "{title}不能为空"
+        "errorMessage": "手机号格式错误"
       }
     ],
     "title": "电话",
@@ -64,11 +64,11 @@ const validator = {
     "rules": [
       {
         "required": true,
-        "errorMessage": "{title}不能为空"
+        "errorMessage": "角色id不能为空"
       },
       {
         "format": "int",
-        "errorMessage": "{title}不能为空"
+        "errorMessage": "角色id格式错误"
       },
       {
         "range": [
@@ -81,7 +81,7 @@ const validator = {
             "value": 2
           }
         ],
-        "errorMessage": "{title}不能为空"
+        "errorMessage": "11"
       }
     ],
     "title": "角色id",
@@ -95,7 +95,7 @@ const validator = {
       },
       {
         "format": "email",
-        "errorMessage": "{title}格式无效"
+        "errorMessage": "邮箱格式无效"
       }
     ],
     "title": "邮箱",

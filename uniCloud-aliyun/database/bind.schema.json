@@ -1,1 +1,37 @@
-{"bsonType":"object","required":[],"permission":{"read":false,"create":false,"update":false,"delete":false},"properties":{"_id":{"description":"ID，系统自动生成"},"student_id":{"bsonType":"int","title":"学员id","description":"被绑定关系的学员id","foreignKey":"user._id"},"member_id":{"bsonType":"int","title":"会员id","description":"绑定关系中的会员id","foreignKey":"member._id"},"key":{"bsonType":"string","title":"密钥","description":"绑定关系中的密钥"},"date":{"bsonType":"date","title":"绑定日期","description":"绑定日期"}}}
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"student_id": {
+			"bsonType": "string",
+			"title": "学员id",
+			"description": "被绑定关系的学员id",
+			"foreignKey": "user._id"
+		},
+		"member_id": {
+			"bsonType": "string",
+			"title": "会员id",
+			"description": "绑定关系中的会员id",
+			"foreignKey": "member._id"
+		},
+		"key": {
+			"bsonType": "string",
+			"title": "密钥",
+			"description": "绑定关系中的密钥"
+		},
+		"date": {
+			"bsonType": "date",
+			"title": "绑定日期",
+			"description": "绑定日期"
+		}
+	}
+}

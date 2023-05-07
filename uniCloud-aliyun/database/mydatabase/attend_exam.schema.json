@@ -2,10 +2,10 @@
 	"bsonType": "object",
 	"required": [],
 	"permission": {
-		"read": false,
-		"create": false,
-		"update": false,
-		"delete": false
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
 	},
 	"properties": {
 		"_id": {
@@ -17,13 +17,13 @@
 			"description": "用户参加考试的时间"
 		},
 		"user_id": {
-			"bsonType": "int",
+			"bsonType": "string",
 			"title": "用户id",
 			"description": "参加用户的id",
 			"foreignKey": "user._id"
 		},
 		"exam_id": {
-			"bsonType": "int",
+			"bsonType": "string",
 			"title": "考试id",
 			"description": "参加考试的id",
 			"foreignKey": "exam._id"
@@ -34,7 +34,7 @@
 			"description": "考试用的试卷"
 		},
 		"course_id": {
-			"bsonType": "int",
+			"bsonType": "string",
 			"title": "课程id",
 			"description": "该次考试属于哪一个课程",
 			"foreignKey": "course._id"

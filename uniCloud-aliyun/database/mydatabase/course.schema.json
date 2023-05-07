@@ -35,6 +35,11 @@
 			"bsonType": "int",
 			"title": "vip价格",
 			"description": ""
+		},
+		"exam_id": {
+			"bsonType": "string",
+			"title": "考试id",
+			"defaultValue": "none"
 		}
 	}
 }

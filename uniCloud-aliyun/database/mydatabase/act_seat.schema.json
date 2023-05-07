@@ -2,17 +2,17 @@
 	"bsonType": "object",
 	"required": [],
 	"permission": {
-		"read": false,
-		"create": false,
-		"update": false,
-		"delete": false
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
 	},
 	"properties": {
 		"_id": {
 			"description": "ID，系统自动生成"
 		},
 		"user_id": {
-			"bsonType": "int",
+			"bsonType": "string",
 			"title": "用户id",
 			"description": "座位使用者的id",
 			"foreignKey": "user._id"

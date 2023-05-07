@@ -4,8 +4,8 @@
       <uni-forms-item name="name" label="课程名称">
         <uni-easyinput placeholder="" v-model="formData.name"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="intro"  label="课程描述">
-        <uni-easyinput placeholder="" type="textarea" maxlength="400" v-model="formData.intro"></uni-easyinput>
+      <uni-forms-item name="intro" label="课程描述">
+        <uni-easyinput placeholder="" v-model="formData.intro"></uni-easyinput>
       </uni-forms-item>
       <uni-forms-item name="cover_path" label="封面路径">
         <uni-easyinput placeholder="" v-model="formData.cover_path"></uni-easyinput>
@@ -15,6 +15,15 @@
       </uni-forms-item>
       <uni-forms-item name="vip_price" label="vip价格">
         <uni-easyinput placeholder="" type="number" v-model="formData.vip_price"></uni-easyinput>
+      </uni-forms-item>
+      <uni-forms-item name="exam_id" label="考试id">
+        <uni-easyinput v-model="formData.exam_id"></uni-easyinput>
+      </uni-forms-item>
+      <uni-forms-item name="begin_time" label="开始时间" required>
+        <uni-datetime-picker type="date" return-type="date" v-model="formData.begin_time"></uni-datetime-picker>
+      </uni-forms-item>
+      <uni-forms-item name="end_time" label="结束时间">
+        <uni-datetime-picker type="date" return-type="date" v-model="formData.end_time"></uni-datetime-picker>
       </uni-forms-item>
       <view class="uni-button-group">
         <button type="primary" class="uni-button" style="width: 100px;" @click="submit">提交</button>
@@ -52,7 +61,10 @@
         "intro": "",
         "cover_path": "",
         "price": null,
-        "vip_price": null
+        "vip_price": null,
+        "exam_id": "none",
+        "begin_time": null,
+        "end_time": null
       }
       return {
         formData,

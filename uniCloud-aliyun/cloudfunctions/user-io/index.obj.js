@@ -70,7 +70,6 @@ module.exports = {
 					user[key] = param[key];
 				}
 
-				user["role_id"] = 1;
 
 
 
@@ -153,6 +152,13 @@ module.exports = {
 			_id: params.user_id
 		}).get()
 		return user;
-	}
+	},
+	
+	/**
+	 * 购买课程
+	 * @param {Object}  params
+	 * @param {String}  params.user_id       用户id
+	 * @returns {Object} user	获取到的用户
+	 */
 
 }

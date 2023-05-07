@@ -2,10 +2,10 @@
 	"bsonType": "object",
 	"required": [],
 	"permission": {
-		"read": false,
-		"create": false,
-		"update": false,
-		"delete": false
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
 	},
 	"properties": {
 		"_id": {
@@ -14,52 +14,34 @@
 		"name": {
 			"bsonType": "string",
 			"title": "文件名称",
-			"description": "",
+			"description": ""
 		},
 		"url": {
 			"bsonType": "string",
 			"title": "文件路径",
-			"description": "",
+			"description": ""
 		},
 		"type": {
 			"bsonType": "string",
 			"title": "文件类型",
-			"description": "",
+			"description": ""
 		},
 		"size": {
 			"bsonType": "int",
 			"title": "文件大小",
-			"description": "",
+			"description": ""
 		},
 		"is_deleted": {
-			"bsonType": "int",
+			"bsonType": "bool",
 			"title": "文件是否被删除",
-			"description": "0未删除， 1已删除",
-			"defaultValue": 0,
-			"enum": [{
-					"text": "未删除",
-					"value": 0
-				},
-				{
-					"text": "已删除",
-					"value": 1
-				}
-			]
+			"description": "false未删除， true已删除",
+			"defaultValue": false
 		},
 		"is_used": {
-			"bsonType": "int",
+			"bsonType": "bool",
 			"title": "文件是否被使用",
-			"description": "0未使用， 1已使用",
-			"defaultValue": 0,
-			"enum": [{
-					"text": "未使用",
-					"value": 0
-				},
-				{
-					"text": "已使用",
-					"value": 1
-				}
-			]
+			"description": "false未使用， true已使用",
+			"defaultValue": false
 		}
 	}
 }

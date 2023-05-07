@@ -2,17 +2,17 @@
 	"bsonType": "object",
 	"required": [],
 	"permission": {
-		"read": false,
-		"create": false,
-		"update": false,
-		"delete": false
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
 	},
 	"properties": {
 		"_id": {
 			"description": "ID，系统自动生成"
 		},
 		"file_id": {
-			"bsonType": "int",
+			"bsonType": "string",
 			"title": "对应文件id",
 			"description": "",
 			"foreignKey": "file._id"
