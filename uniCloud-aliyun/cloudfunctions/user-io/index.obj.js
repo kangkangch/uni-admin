@@ -3,15 +3,14 @@
 
 // let db  = uniCloud.database();
 var db = null;
-
 module.exports = {
-	
+
 
 	_before: function() { // 通用预处理器
 		db = uniCloud.databaseForJQL({
 			clientInfo: this.getClientInfo()
 		})
-		
+
 		db.setUser({ // 指定后续执行操作的用户信息，此虚拟用户将同时拥有传入的uid、role、permission
 			role: ['admin'], // 指定当前执行用户的角色为admin。如果只希望指定为admin身份，可以删除uid和permission字段
 		})
@@ -92,34 +91,68 @@ module.exports = {
 					complete: () => { // 完成后的回调
 					}
 				})
-			}
-			
-			else{
+			} else
 				throw {
-				  errCode: "该手机号已注册"
+					errCode: "该手机号已注册"
 				}
-			}
+
 			// res 为数据库查询结果
 		}).catch((err) => {
 			console.log('获取表信息失败----', err)
-
+			throw (error);
 			// err.message 错误信息
 			// err.code 错误码
 		})
 
 	},
-	
+
 	/**
-	 * 新增用户
+	 * 登录
 	 * @param {Object}  params
-	 * @param {String}  params.user_name       用户名
 	 * @param {String}  params.password       密码
-	 * @param {Array}   params.role_id        用户角色列表
 	 * @param {String}  params.phone         手机号
-	 * @param {String}  params.email          邮箱
-	 * @param {String}   params.area      	  注册地区
 	 * @returns
 	 */
+	loginwithpwd: async function(params) {
+		const users = await db.collection('user').where({
+			phone: params.phone
+		}).get()
+		if (!users.data.length) {
+			throw {
+				message: "该账号未注册"
+			}
+		} else {
+			let user = users.data[0];
+			// console.log(111)
+			if (user.password == params.password) {
+				let token = {
+					user_id: user._id,
+					role_id: user.role_id,
+					user_name: user.user_name
+				}
+				// console.log(token);
+				return token;
+			} else {
+				throw {
+					message: "密码错误"
+				}
+			}
+		}
 
+	},
+	
+	/**
+	 * 获取用户信息
+	 * @param {Object}  params
+	 * @param {String}  params.user_id       用户id
+	 * @returns {Object} user	获取到的用户
+	 */
+	
+	getUserInfo: async function(params) {
+		const user = await db.collection('user').where({
+			_id: params.user_id
+		}).get()
+		return user;
+	}
 
 }

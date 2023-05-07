@@ -136,7 +136,7 @@
 				"navigationBarTitleText": "设置密码"
 			}
 		}
-],
+	],
 	"subPackages": [{
 			"root": "pages/system",
 			"pages": [{
@@ -458,26 +458,38 @@
 		},
 		{
 			"root": "pages/myapp",
-			"pages": [
-				{
-				    "path": "user/add",
-				    "style": {
-				        "navigationBarTitleText": "新增"
-				    }
+			"pages": [{
+					"path": "user/add",
+					"style": {
+						"navigationBarTitleText": "新增"
+					}
+				}, {
+					"path": "user/edit",
+					"style": {
+						"navigationBarTitleText": "编辑"
+					}
+				}, {
+					"path": "user/list",
+					"style": {
+						"navigationBarTitleText": "列表"
+					}
+				}, {
+					"path": "course/add",
+					"style": {
+						"navigationBarTitleText": "新增"
+					}
+				}, {
+					"path": "course/edit",
+					"style": {
+						"navigationBarTitleText": "编辑"
+					}
+				}, {
+					"path": "course/list",
+					"style": {
+						"navigationBarTitleText": "列表"
+					}
 				}
-				,{
-				    "path": "user/edit",
-				    "style": {
-				        "navigationBarTitleText": "编辑"
-				    }
-				}
-				,{
-				    "path": "user/list",
-				    "style": {
-				        "navigationBarTitleText": "列表"
-				    }
-				}
-]
+			]
 		}
 	],
 	"globalStyle": {

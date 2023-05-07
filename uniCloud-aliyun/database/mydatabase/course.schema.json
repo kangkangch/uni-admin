@@ -2,10 +2,10 @@
 	"bsonType": "object",
 	"required": [],
 	"permission": {
-		"read": false,
-		"create": false,
-		"update": false,
-		"delete": false
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
 	},
 	"properties": {
 		"_id": {
@@ -35,12 +35,6 @@
 			"bsonType": "int",
 			"title": "vip价格",
 			"description": ""
-		},
-		"exam_id": {
-			"bsonType": "int",
-			"title": "考试id",
-			"description": "",
-			"defaultValue": null
 		}
 	}
 }
