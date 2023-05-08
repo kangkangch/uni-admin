@@ -44,12 +44,6 @@
 			"title": "答卷",
 			"description": "用户的答卷"
 		},
-		"status": {
-			"bsonType": "bool",
-			"title": "考试状态",
-			"description": "考试状态：true进行中 false已结束",
-			"defaultValue": true
-		},
 		"score": {
 			"bsonType": "int",
 			"title": "分数",
