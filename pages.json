@@ -488,8 +488,22 @@
 					"style": {
 						"navigationBarTitleText": "列表"
 					}
+				}, {
+					"path": "question/add",
+					"style": {
+						"navigationBarTitleText": "新增"
+					}
+				}, {
+					"path": "question/edit",
+					"style": {
+						"navigationBarTitleText": "编辑"
+					}
+				}, {
+					"path": "question/list",
+					"style": {
+						"navigationBarTitleText": "列表"
+					}
 				}
-
 			]
 		}
 	],
