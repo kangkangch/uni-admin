@@ -12,41 +12,52 @@
  */
 
 exports.main = async (event, context) => {
-	console.log('event : ', event)
+	// console.log('event : ', event)
 
 	const db = uniCloud.databaseForJQL({ // 获取JQL database引用，此处需要传入云函数的event和context，必传
 		event,
 		context
 	})
 	//event为客户端上传的参数
-	const phone = await db.collection('user').where("_id== $event.user_id");
-	console.log(phone);
+	var user = await db.collection('user').where({
+		_id : event.user_id
+	}).get();
+	let phone = user.data[0].phone;
+	// console.log(11111111, phone);
 
-	let order = {
+	var order = {
 		user_id: "",
 		phone: phone,
 		price: "",
-		goods_type: 1,
+		goods_type: event.goods_type,
 		goods_id: "",
 		to_ids: [],
 	}
 
-	for (let key in param) {
-		order[key] = param[key];
+	for (let key in event) {
+		order[key] = event[key];
 	}
+	
+	
+	// console.log("order_params:", order);
 
-	await db.collection('order').add(user, {
-					toastTitle: '新增成功', // toast提示语
+	var result =  await db.collection('order').add(order, {
+					toastTitle: '订单生成成功', // toast提示语
 					success: (res) => { // 新增成功后的回调
 						console.log(res);
 					},
 					fail: (err) => { // 新增失败后的回调
-						console.log(err) err
+						console.log(err)
 					},
 					complete: () => { // 完成后的回调
 					}
 				})
-
+				
+	var order_id = result.id;
+	
 	//返回数据给客户端
-	return event
+	return {
+		order_id : order_id,
+		order_type : event.goods_type
+	}
 };

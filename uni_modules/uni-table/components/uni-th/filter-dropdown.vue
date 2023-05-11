@@ -52,7 +52,7 @@
 			<!-- date -->
 			<view v-if="isDate">
 				<uni-datetime-picker ref="datetimepicker" :value="dateRange" type="datetimerange" return-type="timestamp" @change="datetimechange" @maskClick="timepickerclose">
-					<view></view>
+					<!-- <view></view> -->
 				</uni-datetime-picker>
 			</view>
 		</view>

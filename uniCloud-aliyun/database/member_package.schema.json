@@ -11,6 +11,11 @@
 		"_id": {
 			"description": "ID，系统自动生成"
 		},
+		"package_type": {
+			"bsonType": "int",
+			"title": "类别",
+			"description": "套餐类别，用于区分不同套餐"
+		}
 		"month": {
 			"bsonType": "int",
 			"title": "有效月份",

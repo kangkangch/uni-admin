@@ -45,20 +45,36 @@
 			"title": "考试id",
 			"defaultValue": "none"
 		},
+		"attend_num": {
+			"bsonType": "int",
+			"title": "参加人数",
+			"description": "参加课程的人数",
+			"defaultValue": 0
+		},
 		"begin_time": {
-			"bsonType": "string",
+			"bsonType": "date",
 			"title": "开始时间",
 			"defaultValue": {
 				"$env": "now"
 			},
-			"errorMessage": "开始时间不能为空"
+			"errorMessage": "课程开始时间不能为空"
 		},
 		"end_time": {
-			"bsonType": "string",
+			"bsonType": "date",
 			"title": "结束时间",
-			"defaultValue": {
-				"$env": "now"
-			}
+			"defaultValue": ""
+		},
+		"temp_id": {
+			"bsonType": "string",
+			"title": "模板id",
+			"description": "证书模板id，便于发放证书",
+			"defaultValue": "",
+			"foreignKey": "cert_template._id"
+		},
+		"content": {
+			"bsonType": "string",
+			"title": "模板内容",
+			"description": ""
 		}
 	}
 }

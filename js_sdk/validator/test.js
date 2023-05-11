@@ -93,25 +93,6 @@ const validator = {
     "title": "结束时间",
     "defaultValue": "",
     "label": "结束时间"
-  },
-  "temp_id": {
-    "rules": [
-      {
-        "format": "string"
-      }
-    ],
-    "title": "模板id",
-    "defaultValue": "",
-    "label": "模板id"
-  },
-  "content": {
-    "rules": [
-      {
-        "format": "string"
-      }
-    ],
-    "title": "模板内容",
-    "label": "模板内容"
   }
 }
 
@@ -140,7 +121,16 @@ function filterToWhere(filter, command) {
         if (value.length) {
           let gt = value[0]
           let lt = value[1]
-          where[field] = command.and([command.gte(gt), command.lte(lt)])
+          if(isNaN(gt) && !isNaN(lt)) {
+          			  where[field] = command.lte(lt);
+          } else if(!isNaN(gt) && isNaN(lt)){
+          			  where[field] = command.gte(gt);
+          } else if(!isNaN(gt) && !isNaN(lt)) {
+          			  where[field] = command.and([command.gte(gt), command.lte(lt)])
+          			  console.log(command.and([command.gte(gt), command.lte(lt)]));
+          } else {
+          			  where[field] = command;
+          }
         }
         break;
       case "date":
@@ -148,7 +138,11 @@ function filterToWhere(filter, command) {
           let [s, e] = value
           let startDate = new Date(s)
           let endDate = new Date(e)
-          where[field] = command.and([command.gte(startDate), command.lte(endDate)])
+          
+          let sTime = getTime(startDate)
+          let eTime = getTime(endDate)
+          
+          where[field] = command.and([command.gte(sTime), command.lte(eTime)])
         }
         break;
       case "timestamp":
@@ -160,6 +154,16 @@ function filterToWhere(filter, command) {
     }
   }
   return where
+}
+
+function getTime(date){
+	var year = date.getFullYear();
+	var month = date.getMonth() + 1;
+	var day = date.getDate();
+	month >= 1 && month <= 9 ? (month = "0" + month) : "";
+	day >= 0 && day <= 9 ? (day = "0" + day) : "";
+	var newDate = year + '-' + month + '-' + day
+	return newDate
 }
 
 export { validator, enumConverter, filterToWhere }

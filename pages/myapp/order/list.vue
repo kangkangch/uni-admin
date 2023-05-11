@@ -16,30 +16,45 @@
       </view>
     </view>
     <view class="uni-container">
-      <unicloud-db ref="udb" :collection="collectionList" field="title,a,b,c,d,answer,parse,course_id" :where="where" page-data="replace"
+      <unicloud-db ref="udb" :collection="collectionList" field="user_id,phone,price,status,trade_no,pay_time,create_time,last_time,goods_id,goods_type,order_no,to_ids" :where="where" page-data="replace"
         :orderby="orderby" :getcount="true" :page-size="options.pageSize" :page-current="options.pageCurrent"
         v-slot:default="{data,pagination,loading,error,options}" :options="options" loadtime="manual" @load="onqueryload">
         <uni-table ref="table" :loading="loading" :emptyText="error.message || '没有更多数据'" border stripe type="selection" @selection-change="selectionChange">
           <uni-tr>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'title')" sortable @sort-change="sortChange($event, 'title')">题目名称</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'a')" sortable @sort-change="sortChange($event, 'a')">A</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'b')" sortable @sort-change="sortChange($event, 'b')">B</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'c')" sortable @sort-change="sortChange($event, 'c')">C</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'd')" sortable @sort-change="sortChange($event, 'd')">D</uni-th>
-            <uni-th align="center" filter-type="select" :filter-data="options.filterData.answer_localdata" @filter-change="filterChange($event, 'answer')">答案</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'parse')" sortable @sort-change="sortChange($event, 'parse')">解析</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'course_id')" sortable @sort-change="sortChange($event, 'course_id')">课程ID</uni-th>
+            <uni-th align="center" sortable @sort-change="sortChange($event, 'user_id')">用户ID</uni-th>
+            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'phone')" sortable @sort-change="sortChange($event, 'phone')">电话号码</uni-th>
+            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'price')" sortable @sort-change="sortChange($event, 'price')">订单价格</uni-th>
+            <uni-th align="center" sortable @sort-change="sortChange($event, 'status')">订单状态</uni-th>
+            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'trade_no')" sortable @sort-change="sortChange($event, 'trade_no')">交易号</uni-th>
+            <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'pay_time')" sortable @sort-change="sortChange($event, 'pay_time')">付款时间</uni-th>
+            <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'create_time')" sortable @sort-change="sortChange($event, 'create_time')">订单创建时间</uni-th>
+            <uni-th align="center" filter-type="timestamp" @filter-change="filterChange($event, 'last_time')" sortable @sort-change="sortChange($event, 'last_time')">最后修改时间</uni-th>
+            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'goods_id')" sortable @sort-change="sortChange($event, 'goods_id')">商品ID</uni-th>
+            <uni-th align="center" filter-type="select" :filter-data="options.filterData.goods_type_localdata" @filter-change="filterChange($event, 'goods_type')">商品类型</uni-th>
+            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'order_no')" sortable @sort-change="sortChange($event, 'order_no')">订单号</uni-th>
+            <uni-th align="center" sortable @sort-change="sortChange($event, 'to_ids')">收货人</uni-th>
             <uni-th align="center">操作</uni-th>
           </uni-tr>
           <uni-tr v-for="(item,index) in data" :key="index">
-            <uni-td align="center">{{item.title}}</uni-td>
-            <uni-td align="center">{{item.a}}</uni-td>
-            <uni-td align="center">{{item.b}}</uni-td>
-            <uni-td align="center">{{item.c}}</uni-td>
-            <uni-td align="center">{{item.d}}</uni-td>
-            <uni-td align="center">{{options.answer_valuetotext[item.answer]}}</uni-td>
-            <uni-td align="center">{{item.parse}}</uni-td>
-            <uni-td align="center">{{item.course_id}}</uni-td>
+            <uni-td align="center">{{item.user_id}}</uni-td>
+            <uni-td align="center">{{item.phone}}</uni-td>
+            <uni-td align="center">{{item.price}}</uni-td>
+			<!-- '✅''❌' -->
+            <uni-td align="center">{{item.status == true ? '已支付' : '未支付' }}</uni-td>
+            <uni-td align="center">{{item.trade_no}}</uni-td>
+            <uni-td align="center">
+              <uni-dateformat :threshold="[0, 0]" :date="item.pay_time"></uni-dateformat>
+            </uni-td>
+            <uni-td align="center">
+              <uni-dateformat :threshold="[0, 0]" :date="item.create_time"></uni-dateformat>
+            </uni-td>
+            <uni-td align="center">
+              <uni-dateformat :threshold="[0, 0]" :date="item.last_time"></uni-dateformat>
+            </uni-td>
+            <uni-td align="center">{{item.goods_id}}</uni-td>
+            <uni-td align="center">{{options.goods_type_valuetotext[item.goods_type]}}</uni-td>
+            <uni-td align="center">{{item.order_no}}</uni-td>
+            <uni-td align="center">{{item.to_ids}}</uni-td>
             <uni-td align="center">
               <view class="uni-group">
                 <button @click="navigateTo('./edit?id='+item._id, false)" class="uni-button" size="mini" type="primary">修改</button>
@@ -57,14 +72,12 @@
 </template>
 
 <script>
-  import { enumConverter, filterToWhere } from '@/js_sdk/validator/question.js';
+  import { enumConverter, filterToWhere } from '@/js_sdk/validator/order.js';
 
   const db = uniCloud.database()
   // 表查询配置
   const dbOrderBy = '' // 排序字段
-
-  const dbSearchFields = ['answer'] // 模糊搜索字段，支持模糊搜索的字段列表。联表查询格式: 主表字段名.副表字段名，例如用户表关联角色表 role.role_name
-
+  const dbSearchFields = [] // 模糊搜索字段，支持模糊搜索的字段列表。联表查询格式: 主表字段名.副表字段名，例如用户表关联角色表 role.role_name
   // 分页配置
   const pageSize = 20
   const pageCurrent = 1
@@ -77,7 +90,7 @@
   export default {
     data() {
       return {
-        collectionList: "question",
+        collectionList: "order",
         query: '',
         where: '',
         orderby: dbOrderBy,
@@ -87,21 +100,21 @@
           pageSize,
           pageCurrent,
           filterData: {
-            "answer_localdata": [
+            "goods_type_localdata": [
               {
-                "text": "答案A",
+                "text": "买课程",
                 "value": 1
               },
               {
-                "text": "答案B",
+                "text": "买会员",
                 "value": 2
               },
               {
-                "text": "答案C",
+                "text": "续费会员",
                 "value": 3
               },
               {
-                "text": "答案D",
+                "text": "参加活动",
                 "value": 4
               }
             ]
@@ -113,17 +126,21 @@
           height: 64
         },
         exportExcel: {
-          "filename": "question.xls",
+          "filename": "order.xls",
           "type": "xls",
           "fields": {
-            "题目名称": "title",
-            "A": "a",
-            "B": "b",
-            "C": "c",
-            "D": "d",
-            "答案": "answer",
-            "解析": "parse",
-            "课程ID": "course_id"
+            "用户ID": "user_id",
+            "电话号码": "phone",
+            "订单价格": "price",
+            "订单状态": "status",
+            "交易号": "trade_no",
+            "付款时间": "pay_time",
+            "订单创建时间": "create_time",
+            "最后修改时间": "last_time",
+            "商品ID": "goods_id",
+            "商品类型": "goods_type",
+            "订单号": "order_no",
+            "收货人": "to_ids"
           }
         },
         exportExcelData: []

@@ -16,30 +16,26 @@
       </view>
     </view>
     <view class="uni-container">
-      <unicloud-db ref="udb" :collection="collectionList" field="title,a,b,c,d,answer,parse,course_id" :where="where" page-data="replace"
+      <unicloud-db ref="udb" :collection="collectionList" field="course_id,name,number,score,pass,term" :where="where" page-data="replace"
         :orderby="orderby" :getcount="true" :page-size="options.pageSize" :page-current="options.pageCurrent"
         v-slot:default="{data,pagination,loading,error,options}" :options="options" loadtime="manual" @load="onqueryload">
         <uni-table ref="table" :loading="loading" :emptyText="error.message || '没有更多数据'" border stripe type="selection" @selection-change="selectionChange">
           <uni-tr>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'title')" sortable @sort-change="sortChange($event, 'title')">题目名称</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'a')" sortable @sort-change="sortChange($event, 'a')">A</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'b')" sortable @sort-change="sortChange($event, 'b')">B</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'c')" sortable @sort-change="sortChange($event, 'c')">C</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'd')" sortable @sort-change="sortChange($event, 'd')">D</uni-th>
-            <uni-th align="center" filter-type="select" :filter-data="options.filterData.answer_localdata" @filter-change="filterChange($event, 'answer')">答案</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'parse')" sortable @sort-change="sortChange($event, 'parse')">解析</uni-th>
-            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'course_id')" sortable @sort-change="sortChange($event, 'course_id')">课程ID</uni-th>
+            <uni-th align="center" sortable @sort-change="sortChange($event, 'course_id')">课程id</uni-th>
+            <uni-th align="center" filter-type="search" @filter-change="filterChange($event, 'name')" sortable @sort-change="sortChange($event, 'name')">考试名称</uni-th>
+            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'number')" sortable @sort-change="sortChange($event, 'number')">题量</uni-th>
+            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'score')" sortable @sort-change="sortChange($event, 'score')">总分</uni-th>
+            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'pass')" sortable @sort-change="sortChange($event, 'pass')">及格分</uni-th>
+            <uni-th align="center" filter-type="range" @filter-change="filterChange($event, 'term')" sortable @sort-change="sortChange($event, 'term')">考试时长</uni-th>
             <uni-th align="center">操作</uni-th>
           </uni-tr>
           <uni-tr v-for="(item,index) in data" :key="index">
-            <uni-td align="center">{{item.title}}</uni-td>
-            <uni-td align="center">{{item.a}}</uni-td>
-            <uni-td align="center">{{item.b}}</uni-td>
-            <uni-td align="center">{{item.c}}</uni-td>
-            <uni-td align="center">{{item.d}}</uni-td>
-            <uni-td align="center">{{options.answer_valuetotext[item.answer]}}</uni-td>
-            <uni-td align="center">{{item.parse}}</uni-td>
             <uni-td align="center">{{item.course_id}}</uni-td>
+            <uni-td align="center">{{item.name}}</uni-td>
+            <uni-td align="center">{{item.number}}</uni-td>
+            <uni-td align="center">{{item.score}}</uni-td>
+            <uni-td align="center">{{item.pass}}</uni-td>
+            <uni-td align="center">{{item.term}}</uni-td>
             <uni-td align="center">
               <view class="uni-group">
                 <button @click="navigateTo('./edit?id='+item._id, false)" class="uni-button" size="mini" type="primary">修改</button>
@@ -57,14 +53,12 @@
 </template>
 
 <script>
-  import { enumConverter, filterToWhere } from '@/js_sdk/validator/question.js';
+  import { enumConverter, filterToWhere } from '@/js_sdk/validator/exam.js';
 
   const db = uniCloud.database()
   // 表查询配置
   const dbOrderBy = '' // 排序字段
-
-  const dbSearchFields = ['answer'] // 模糊搜索字段，支持模糊搜索的字段列表。联表查询格式: 主表字段名.副表字段名，例如用户表关联角色表 role.role_name
-
+  const dbSearchFields = [] // 模糊搜索字段，支持模糊搜索的字段列表。联表查询格式: 主表字段名.副表字段名，例如用户表关联角色表 role.role_name
   // 分页配置
   const pageSize = 20
   const pageCurrent = 1
@@ -77,7 +71,7 @@
   export default {
     data() {
       return {
-        collectionList: "question",
+        collectionList: "exam",
         query: '',
         where: '',
         orderby: dbOrderBy,
@@ -86,26 +80,7 @@
         options: {
           pageSize,
           pageCurrent,
-          filterData: {
-            "answer_localdata": [
-              {
-                "text": "答案A",
-                "value": 1
-              },
-              {
-                "text": "答案B",
-                "value": 2
-              },
-              {
-                "text": "答案C",
-                "value": 3
-              },
-              {
-                "text": "答案D",
-                "value": 4
-              }
-            ]
-          },
+          filterData: {},
           ...enumConverter
         },
         imageStyles: {
@@ -113,17 +88,15 @@
           height: 64
         },
         exportExcel: {
-          "filename": "question.xls",
+          "filename": "exam.xls",
           "type": "xls",
           "fields": {
-            "题目名称": "title",
-            "A": "a",
-            "B": "b",
-            "C": "c",
-            "D": "d",
-            "答案": "answer",
-            "解析": "parse",
-            "课程ID": "course_id"
+            "课程id": "course_id",
+            "考试名称": "name",
+            "题量": "number",
+            "总分": "score",
+            "及格分": "pass",
+            "考试时长": "term"
           }
         },
         exportExcelData: []

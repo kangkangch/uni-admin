@@ -8,7 +8,7 @@
 		"delete": true
 	},
 	"fieldRules": [{
-	    "rule": "bind_num == null || bind_num != null && bind_num <= max_bind",
+	    "rule": "bind_num == null || (bind_num != null && bind_num <= max_bind )",
 	    "errorMessage": "超出最大挂靠数量"
 	  }],
 	"properties": {
@@ -22,24 +22,26 @@
 			"foreignKey": "user._id"
 		},
 		"create_time": {
-			"bsonType": "date",
+			"bsonType": "string",
 			"title": "申请日期",
 			"description": "成为会员的日期"
 		},
 		"update_time": {
-			"bsonType": "date",
+			"bsonType": "string",
 			"title": "续费日期",
-			"description": "续费会员的日期"
+			"description": "续费会员的日期",
+			"defaultValue": ""
 		},
 		"end_time": {
-			"bsonType": "date",
+			"bsonType": "string",
 			"title": "到期日期",
 			"description": ""
 		},
 		"bind_num": {
 			"bsonType": "int",
 			"title": "挂靠人数",
-			"description": ""
+			"description": "",
+			"defaultValue": 0
 		},
 		"package_id": {
 			"bsonType": "string",
@@ -47,10 +49,11 @@
 			"description": "",
 			"foreignKey": "member_package._id"
 		},
-		"max_bid": {
+		"max_bind": {
 			"bsonType": "int",
 			"title": "最大挂靠数",
-			"description": ""
+			"description": "",
+			"defaultValue": 5
 		}
 	}
 }

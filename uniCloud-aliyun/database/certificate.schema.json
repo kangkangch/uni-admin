@@ -29,6 +29,11 @@
 			"description": "",
 			"foreignKey": "course_id"
 		},
+		"course_name":{
+			"bsonType": "string",
+			"title": "课程名称",
+			"description": "用于显示课程名称，避免重复查找"
+		},
 		"create_time": {
 			"bsonType": "date",
 			"title": "创建日期",
@@ -43,19 +48,33 @@
 			"bsonType": "date",
 			"title": "结束日期",
 			"description": "",
-			"defaultValue": null
+			"defaultValue": ""
 		},
 		"status": {
-			"bsonType": "bool",
+			"bsonType": "int",
 			"title": "审核状态",
 			"description": "false 审核中， true 已审核",
-			"defaultValue": false
+			"defaultValue": 0,
+			"enum": [{
+				"text": "审核中",
+				"value": 0
+			}, {
+				"text": "已审核",
+				"value": 1
+			}]
 		},
 		"is_overdue": {
-			"bsonType": "bool",
+			"bsonType": "int",
 			"title": "是否过期",
 			"description": "false: 没过期， true 已过期",
-			"defaultValue": false
+			"defaultValue": 0,
+			"enum": [{
+				"text": "没过期",
+				"value": 0
+			}, {
+				"text": "已过期",
+				"value": 1
+			}]
 		}
 	}
 }

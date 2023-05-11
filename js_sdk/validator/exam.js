@@ -2,116 +2,63 @@
 
 
 const validator = {
+  "course_id": {
+    "rules": [
+      {
+        "format": "string"
+      }
+    ],
+    "title": "课程id",
+    "label": "课程id"
+  },
   "name": {
     "rules": [
       {
         "format": "string"
       }
     ],
-    "title": "课程名称",
-    "label": "课程名称"
+    "title": "考试名称",
+    "label": "考试名称"
   },
-  "intro": {
-    "rules": [
-      {
-        "format": "string"
-      }
-    ],
-    "title": "课程描述",
-    "label": "课程描述"
-  },
-  "cover_path": {
-    "rules": [
-      {
-        "format": "string"
-      }
-    ],
-    "title": "封面路径",
-    "label": "封面路径"
-  },
-  "price": {
+  "number": {
     "rules": [
       {
         "format": "int"
       }
     ],
-    "title": "课程价格",
-    "label": "课程价格"
+    "title": "题量",
+    "defaultValue": 10,
+    "label": "题量"
   },
-  "vip_price": {
+  "score": {
     "rules": [
       {
         "format": "int"
       }
     ],
-    "title": "vip价格",
-    "label": "vip价格"
+    "title": "总分",
+    "defaultValue": 100,
+    "label": "总分"
   },
-  "exam_id": {
-    "rules": [
-      {
-        "format": "string"
-      }
-    ],
-    "title": "考试id",
-    "defaultValue": "none",
-    "label": "考试id"
-  },
-  "attend_num": {
+  "pass": {
     "rules": [
       {
         "format": "int"
       }
     ],
-    "title": "参加人数",
-    "defaultValue": 0,
-    "label": "参加人数"
+    "title": "及格分",
+    "defaultValue": 60,
+    "label": "及格分"
   },
-  "begin_time": {
+  "term": {
     "rules": [
       {
-        "required": true,
-        "errorMessage": "课程开始时间不能为空"
-      },
-      {
-        "format": "string",
-        "errorMessage": "课程开始时间不能为空"
+        "format": "int"
       }
     ],
-    "title": "开始时间",
-    "defaultValue": {
-      "$env": "now"
-    },
-    "label": "开始时间"
-  },
-  "end_time": {
-    "rules": [
-      {
-        "format": "string"
-      }
-    ],
-    "title": "结束时间",
-    "defaultValue": "",
-    "label": "结束时间"
-  },
-  "temp_id": {
-    "rules": [
-      {
-        "format": "string"
-      }
-    ],
-    "title": "模板id",
-    "defaultValue": "",
-    "label": "模板id"
-  },
-  "content": {
-    "rules": [
-      {
-        "format": "string"
-      }
-    ],
-    "title": "模板内容",
-    "label": "模板内容"
+    "title": "考试时长",
+    "defaultValue": 20,
+    "label": "考试时长"
   }
 }
 

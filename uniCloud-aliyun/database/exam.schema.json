@@ -11,7 +11,7 @@
 		"_id": {
 			"description": "ID，系统自动生成"
 		},
-		"cource_id": {
+		"course_id": {
 			"bsonType": "string",
 			"title": "课程id",
 			"description": "对应的课程id",
@@ -38,13 +38,13 @@
 			"bsonType": "int",
 			"title": "及格分",
 			"description": "考试及格分",
-			"defaultValue":60
+			"defaultValue": 60
 		},
 		"term": {
 			"bsonType": "int",
 			"title": "考试时长",
 			"description": "考试时间限制",
-			"defaultValue":20
+			"defaultValue": 20
 		}
 	}
 }

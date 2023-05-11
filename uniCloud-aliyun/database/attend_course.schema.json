@@ -27,15 +27,18 @@
 		"create_time": {
 			"bsonType": "timestamp",
 			"title": "参加时间",
-			"description": ""
+			"description": "",
+			"defaultValue":{
+				"$env": "now"
+			}
 		},
 		"status": {
 			"bsonType": "int",
 			"title": "考试状态",
-			"description": "1未通过，2已通过，3不通过",
+			"description": "1未开始，2已通过，3不通过",
 			"defaultValue": 1,
 			"enum": [{
-					"text": "未通过",
+					"text": "未开始",
 					"value": 1
 				},
 				{
@@ -57,12 +60,8 @@
 		"score": {
 			"bsonType": "int",
 			"title": "最高分数",
-			"description": ""
-		},
-		"end_time": {
-			"bsonType": "timestamp",
-			"title": "结束时间",
-			"description": "最后考试期限"
+			"description": "",
+			"defaultValue": 0
 		},
 		"cert": {
 			"bsonType": "bool",

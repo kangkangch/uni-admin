@@ -151,6 +151,7 @@
 					} = res.result
 					this.menus = data
 					this.userMenu = this.getUserMenu(this.menus)
+					console.log("userMenu:", userMenu, "this.menus:", this.menus )
 				}).catch((err) => {
 					this.mixinDatacomLoading = false
 					this.mixinDatacomErrorMessage = err

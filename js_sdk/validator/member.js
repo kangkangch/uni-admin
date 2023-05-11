@@ -2,87 +2,33 @@
 
 
 const validator = {
-  "name": {
+  "user_id": {
     "rules": [
       {
         "format": "string"
       }
     ],
-    "title": "课程名称",
-    "label": "课程名称"
+    "title": "用户id",
+    "label": "用户id"
   },
-  "intro": {
+  "create_time": {
     "rules": [
       {
         "format": "string"
       }
     ],
-    "title": "课程描述",
-    "label": "课程描述"
+    "title": "申请日期",
+    "label": "申请日期"
   },
-  "cover_path": {
+  "update_time": {
     "rules": [
       {
         "format": "string"
       }
     ],
-    "title": "封面路径",
-    "label": "封面路径"
-  },
-  "price": {
-    "rules": [
-      {
-        "format": "int"
-      }
-    ],
-    "title": "课程价格",
-    "label": "课程价格"
-  },
-  "vip_price": {
-    "rules": [
-      {
-        "format": "int"
-      }
-    ],
-    "title": "vip价格",
-    "label": "vip价格"
-  },
-  "exam_id": {
-    "rules": [
-      {
-        "format": "string"
-      }
-    ],
-    "title": "考试id",
-    "defaultValue": "none",
-    "label": "考试id"
-  },
-  "attend_num": {
-    "rules": [
-      {
-        "format": "int"
-      }
-    ],
-    "title": "参加人数",
-    "defaultValue": 0,
-    "label": "参加人数"
-  },
-  "begin_time": {
-    "rules": [
-      {
-        "required": true,
-        "errorMessage": "课程开始时间不能为空"
-      },
-      {
-        "format": "string",
-        "errorMessage": "课程开始时间不能为空"
-      }
-    ],
-    "title": "开始时间",
-    "defaultValue": {
-      "$env": "now"
-    },
-    "label": "开始时间"
+    "title": "续费日期",
+    "defaultValue": "",
+    "label": "续费日期"
   },
   "end_time": {
     "rules": [
@@ -90,28 +36,37 @@ const validator = {
         "format": "string"
       }
     ],
-    "title": "结束时间",
-    "defaultValue": "",
-    "label": "结束时间"
+    "title": "到期日期",
+    "label": "到期日期"
   },
-  "temp_id": {
+  "bind_num": {
+    "rules": [
+      {
+        "format": "int"
+      }
+    ],
+    "title": "挂靠人数",
+    "defaultValue": 0,
+    "label": "挂靠人数"
+  },
+  "package_id": {
     "rules": [
       {
         "format": "string"
       }
     ],
-    "title": "模板id",
-    "defaultValue": "",
-    "label": "模板id"
+    "title": "等级包id",
+    "label": "等级包id"
   },
-  "content": {
+  "max_bind": {
     "rules": [
       {
-        "format": "string"
+        "format": "int"
       }
     ],
-    "title": "模板内容",
-    "label": "模板内容"
+    "title": "最大挂靠数",
+    "defaultValue": 5,
+    "label": "最大挂靠数"
   }
 }
 

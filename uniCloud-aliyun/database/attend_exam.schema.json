@@ -28,11 +28,6 @@
 			"description": "参加考试的id",
 			"foreignKey": "exam._id"
 		},
-		"paper": {
-			"bsonType": "string",
-			"title": "试卷",
-			"description": "考试用的试卷"
-		},
 		"course_id": {
 			"bsonType": "string",
 			"title": "课程id",
@@ -42,7 +37,8 @@
 		"user_answer": {
 			"bsonType": "string",
 			"title": "答卷",
-			"description": "用户的答卷"
+			"description": "用户的答卷",
+			"defaultValue": ""
 		},
 		"score": {
 			"bsonType": "int",

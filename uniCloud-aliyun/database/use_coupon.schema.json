@@ -11,10 +11,11 @@
 		"_id": {
 			"description": "ID，系统自动生成"
 		},
-		"coupon_id": {
-			"bsonType": "string",
-			"title": "优惠券ID",
-			"description": "优惠券的ID"
+		"reduce" : {
+			"bsonType": "int",
+			"title": "抵扣额",
+			"description": "抵扣的额度",
+			"defaultValue": 500
 		},
 		"user_id": {
 			"bsonType":"string",
@@ -27,6 +28,11 @@
 			"title":"优惠券状态",
 			"description":"优惠券的状态，false为未使用，true为已使用",
 			"defaultValue": false
+		},
+		"end_time": {
+			"bsonType": "string",
+			"title": "到期时间",
+			"description": "优惠券到期时间"
 		}
 	}
 }

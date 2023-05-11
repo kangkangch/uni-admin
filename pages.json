@@ -488,6 +488,68 @@
 					"style": {
 						"navigationBarTitleText": "列表"
 					}
+				}
+
+				, {
+					"path": "member/add",
+					"style": {
+						"navigationBarTitleText": "新增"
+					}
+				}, {
+					"path": "member/edit",
+					"style": {
+						"navigationBarTitleText": "编辑"
+					}
+				}, {
+					"path": "member/list",
+					"style": {
+						"navigationBarTitleText": "列表"
+					}
+				}, {
+					"path": "order/add",
+					"style": {
+						"navigationBarTitleText": "新增"
+					}
+				}, {
+					"path": "order/edit",
+					"style": {
+						"navigationBarTitleText": "编辑"
+					}
+				}, {
+					"path": "order/list",
+					"style": {
+						"navigationBarTitleText": "列表"
+					}
+				}, {
+					"path": "order/add",
+					"style": {
+						"navigationBarTitleText": "新增"
+					}
+				}, {
+					"path": "order/edit",
+					"style": {
+						"navigationBarTitleText": "编辑"
+					}
+				}, {
+					"path": "order/list",
+					"style": {
+						"navigationBarTitleText": "列表"
+					}
+				}, {
+					"path": "exam/add",
+					"style": {
+						"navigationBarTitleText": "新增"
+					}
+				}, {
+					"path": "exam/edit",
+					"style": {
+						"navigationBarTitleText": "编辑"
+					}
+				}, {
+					"path": "exam/list",
+					"style": {
+						"navigationBarTitleText": "列表"
+					}
 				}, {
 					"path": "question/add",
 					"style": {
@@ -500,6 +562,21 @@
 					}
 				}, {
 					"path": "question/list",
+					"style": {
+						"navigationBarTitleText": "列表"
+					}
+				}, {
+					"path": "cert_template/add",
+					"style": {
+						"navigationBarTitleText": "新增"
+					}
+				}, {
+					"path": "cert_template/edit",
+					"style": {
+						"navigationBarTitleText": "编辑"
+					}
+				}, {
+					"path": "cert_template/list",
 					"style": {
 						"navigationBarTitleText": "列表"
 					}

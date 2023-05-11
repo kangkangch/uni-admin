@@ -1,38 +1,26 @@
 <template>
   <view class="uni-container">
     <uni-forms ref="form" :model="formData" validateTrigger="bind">
-      <uni-forms-item name="name" label="课程名称">
-        <uni-easyinput placeholder="" v-model="formData.name"></uni-easyinput>
+      <uni-forms-item name="user_id" label="用户id">
+        <uni-easyinput placeholder="" v-model="formData.user_id"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="intro" label="课程描述">
-        <uni-easyinput placeholder="" v-model="formData.intro"></uni-easyinput>
+      <uni-forms-item name="create_time" label="申请日期">
+        <uni-easyinput placeholder="成为会员的日期" v-model="formData.create_time"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="cover_path" label="封面路径">
-        <uni-easyinput placeholder="" v-model="formData.cover_path"></uni-easyinput>
+      <uni-forms-item name="update_time" label="续费日期">
+        <uni-easyinput placeholder="续费会员的日期" v-model="formData.update_time"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="price" label="课程价格">
-        <uni-easyinput placeholder="" type="number" v-model="formData.price"></uni-easyinput>
+      <uni-forms-item name="end_time" label="到期日期">
+        <uni-easyinput placeholder="" v-model="formData.end_time"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="vip_price" label="vip价格">
-        <uni-easyinput placeholder="" type="number" v-model="formData.vip_price"></uni-easyinput>
+      <uni-forms-item name="bind_num" label="挂靠人数">
+        <uni-easyinput placeholder="" type="number" v-model="formData.bind_num"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="exam_id" label="考试id">
-        <uni-easyinput v-model="formData.exam_id"></uni-easyinput>
+      <uni-forms-item name="package_id" label="等级包id">
+        <uni-easyinput placeholder="" v-model="formData.package_id"></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item name="attend_num" label="参加人数">
-        <uni-easyinput placeholder="参加课程的人数" type="number" v-model="formData.attend_num"></uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item name="begin_time" label="开始时间" required>
-        <uni-datetime-picker type="date" v-model="formData.begin_time"></uni-datetime-picker>
-      </uni-forms-item>
-      <uni-forms-item name="end_time" label="结束时间">
-        <uni-datetime-picker type="date" v-model="formData.end_time"></uni-datetime-picker>
-      </uni-forms-item>
-      <uni-forms-item name="temp_id" label="模板id">
-        <uni-easyinput placeholder="证书模板id，便于发放证书" v-model="formData.temp_id"></uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item name="content" label="模板内容">
-        <uni-easyinput placeholder="" v-model="formData.content"></uni-easyinput>
+      <uni-forms-item name="max_bind" label="最大挂靠数">
+        <uni-easyinput placeholder="" type="number" v-model="formData.max_bind"></uni-easyinput>
       </uni-forms-item>
       <view class="uni-button-group">
         <button type="primary" class="uni-button" style="width: 100px;" @click="submit">提交</button>
@@ -45,11 +33,11 @@
 </template>
 
 <script>
-  import { validator } from '@/js_sdk/validator/course.js';
+  import { validator } from '@/js_sdk/validator/member.js';
 
   const db = uniCloud.database();
   const dbCmd = db.command;
-  const dbCollectionName = 'course';
+  const dbCollectionName = 'member';
 
   function getValidator(fields) {
     let result = {}
@@ -66,17 +54,13 @@
   export default {
     data() {
       let formData = {
-        "name": "",
-        "intro": "",
-        "cover_path": "",
-        "price": null,
-        "vip_price": null,
-        "exam_id": "none",
-        "attend_num": 0,
-        "begin_time": null,
+        "user_id": "",
+        "create_time": "",
+        "update_time": "",
         "end_time": "",
-        "temp_id": "",
-        "content": ""
+        "bind_num": 0,
+        "package_id": "",
+        "max_bind": 5
       }
       return {
         formData,
@@ -140,7 +124,7 @@
         uni.showLoading({
           mask: true
         })
-        db.collection(dbCollectionName).doc(id).field("name,intro,cover_path,price,vip_price,exam_id,attend_num,begin_time,end_time,temp_id,content").get().then((res) => {
+        db.collection(dbCollectionName).doc(id).field("user_id,create_time,update_time,end_time,bind_num,package_id,max_bind").get().then((res) => {
           const data = res.result.data[0]
           if (data) {
             this.formData = data

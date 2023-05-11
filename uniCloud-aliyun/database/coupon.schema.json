@@ -11,20 +11,23 @@
 		"_id": {
 			"description": "ID，系统自动生成"
 		},
+		"coupon_type": {
+			"bsonType": "int",
+			"title": "类型",
+			"description": "优惠券类型，默认为1，减少价格5元",
+			"defaultValue": 1
+		},
 		"reduce": {
 			"bsonType": "int",
 			"title": "减少价格",
-			"description": ""
+			"description": "该类型优惠券减少的价格，默认1类型，减500分",
+			"defaultValue": 500
 		},
-		"begin_time": {
-			"bsonType": "date",
-			"title": "开始时间",
-			"description": ""
-		},
-		"end_time": {
-			"bsonType": "date",
-			"title": "结束时间",
-			"description": ""
+		"effect_time": {
+			"bsonType": "int",
+			"title": "有效时间",
+			"description": "有效时间，按照月份计算，设置为12就是有效时间为12个月",
+			"defaultValue": 12
 		}
 	}
 }

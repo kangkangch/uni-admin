@@ -2,32 +2,26 @@
 
 
 const validator = {
-  "name": {
+  "user_id": {
     "rules": [
+      {
+        "required": true
+      },
       {
         "format": "string"
       }
     ],
-    "title": "课程名称",
-    "label": "课程名称"
+    "title": "用户ID",
+    "label": "用户ID"
   },
-  "intro": {
+  "phone": {
     "rules": [
       {
         "format": "string"
       }
     ],
-    "title": "课程描述",
-    "label": "课程描述"
-  },
-  "cover_path": {
-    "rules": [
-      {
-        "format": "string"
-      }
-    ],
-    "title": "封面路径",
-    "label": "封面路径"
+    "title": "电话号码",
+    "label": "电话号码"
   },
   "price": {
     "rules": [
@@ -35,87 +29,130 @@ const validator = {
         "format": "int"
       }
     ],
-    "title": "课程价格",
-    "label": "课程价格"
+    "title": "订单价格",
+    "label": "订单价格"
   },
-  "vip_price": {
+  "status": {
     "rules": [
       {
-        "format": "int"
+        "format": "bool"
       }
     ],
-    "title": "vip价格",
-    "label": "vip价格"
+    "title": "订单状态",
+    "defaultValue": false,
+    "label": "订单状态"
   },
-  "exam_id": {
+  "trade_no": {
     "rules": [
       {
         "format": "string"
       }
     ],
-    "title": "考试id",
-    "defaultValue": "none",
-    "label": "考试id"
+    "title": "交易号",
+    "defaultValue": "",
+    "label": "交易号"
   },
-  "attend_num": {
+  "pay_time": {
     "rules": [
       {
-        "format": "int"
+        "format": "timestamp"
       }
     ],
-    "title": "参加人数",
-    "defaultValue": 0,
-    "label": "参加人数"
+    "title": "付款时间",
+    "defaultValue": "",
+    "label": "付款时间"
   },
-  "begin_time": {
+  "create_time": {
     "rules": [
       {
-        "required": true,
-        "errorMessage": "课程开始时间不能为空"
-      },
-      {
-        "format": "string",
-        "errorMessage": "课程开始时间不能为空"
+        "format": "timestamp"
       }
     ],
-    "title": "开始时间",
+    "title": "订单创建时间",
     "defaultValue": {
       "$env": "now"
     },
-    "label": "开始时间"
+    "label": "订单创建时间"
   },
-  "end_time": {
+  "last_time": {
+    "rules": [
+      {
+        "format": "timestamp"
+      }
+    ],
+    "title": "最后修改时间",
+    "defaultValue": {
+      "$env": "now"
+    },
+    "label": "最后修改时间"
+  },
+  "goods_id": {
     "rules": [
       {
         "format": "string"
       }
     ],
-    "title": "结束时间",
+    "title": "商品ID",
+    "label": "商品ID"
+  },
+  "goods_type": {
+    "rules": [
+      {
+        "format": "int"
+      },
+      {
+        "range": [
+          {
+            "text": "买课程",
+            "value": 1
+          },
+          {
+            "text": "买会员",
+            "value": 2
+          },
+          {
+            "text": "续费会员",
+            "value": 3
+          },
+          {
+            "text": "参加活动",
+            "value": 4
+          }
+        ]
+      }
+    ],
+    "title": "商品类型",
+    "label": "商品类型"
+  },
+  "order_no": {
+    "rules": [
+      {
+        "format": "string"
+      }
+    ],
+    "title": "订单号",
     "defaultValue": "",
-    "label": "结束时间"
+    "label": "订单号"
   },
-  "temp_id": {
+  "to_ids": {
     "rules": [
       {
-        "format": "string"
+        "format": "array"
       }
     ],
-    "title": "模板id",
-    "defaultValue": "",
-    "label": "模板id"
-  },
-  "content": {
-    "rules": [
-      {
-        "format": "string"
-      }
-    ],
-    "title": "模板内容",
-    "label": "模板内容"
+    "title": "收货人",
+    "label": "收货人"
   }
 }
 
-const enumConverter = {}
+const enumConverter = {
+  "goods_type_valuetotext": {
+    "1": "买课程",
+    "2": "买会员",
+    "3": "续费会员",
+    "4": "参加活动"
+  }
+}
 
 function filterToWhere(filter, command) {
   let where = {}
